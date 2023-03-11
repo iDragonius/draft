@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "temp_auths",
+  "info": {
+    "singularName": "temp-auth",
+    "pluralName": "temp-auths",
+    "displayName": "Temp Auth"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "try_count": {
+      "type": "integer",
+      "default": 0,
+      "max": 3
+    },
+    "otps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::auth.otp",
+      "mappedBy": "temp_auth"
+    },
+    "country_code": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::auth.country-code",
+      "inversedBy": "temp_auths"
+    },
+    "blocked_date": {
+      "type": "datetime"
+    }
+  }
+}

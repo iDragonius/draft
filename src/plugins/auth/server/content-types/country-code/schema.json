@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "country_codes",
+  "info": {
+    "singularName": "country-code",
+    "pluralName": "country-codes",
+    "displayName": "Country Code"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "attributes": {
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "auths": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::auth.auth",
+      "mappedBy": "country_code"
+    },
+    "temp_auths": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::auth.temp-auth",
+      "mappedBy": "country_code"
+    }
+  }
+}

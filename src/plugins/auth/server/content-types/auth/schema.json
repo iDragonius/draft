@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "auths",
+  "info": {
+    "singularName": "auth",
+    "pluralName": "auths",
+    "displayName": "auth"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "try_count": {
+      "type": "integer",
+      "default": 0,
+      "max": 3
+    },
+
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "auth"
+    },
+    "otps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::auth.otp",
+      "mappedBy": "auth"
+    },
+    "country_code": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::auth.country-code",
+      "inversedBy": "auths"
+    },
+    "blocked_date": {
+      "type": "datetime"
+    }
+  }
+}

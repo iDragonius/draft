@@ -15,4 +15,8 @@ export default ({ strapi }: { strapi: Strapi }) => ({
 
     return token;
   },
+  async checkVisitor(){
+
+    return {status:true}
+  }
 });
